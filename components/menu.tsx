@@ -1,63 +1,81 @@
-import React from "react";
+import React, { Props } from "react";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-
-const drawerWidth = 240;
+import {
+  Home as HomeIcon,
+  Search as SearchIcon,
+  AddShoppingCart as AddShoppingCartIcon,
+  Favorite as FavoriteIcon,
+  AccountCircle as AccountCircleIcon,
+} from "@material-ui/icons";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
     },
-
     drawer: {
-      width: drawerWidth,
       flexShrink: 0,
-    },
-    drawerPaper: {
-      width: drawerWidth,
     },
   })
 );
 
-export default function Menu() {
+type MenuProps = {
+  drawerWidth: number;
+};
+
+export default function Menu({ drawerWidth }: MenuProps) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
+      {console.log(drawerWidth)}
       <Drawer
+        style={{ width: drawerWidth }}
         className={classes.drawer}
         variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
         anchor="left"
       >
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
+          <Link href="/home">
+            <ListItem button>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="Inicio" />
             </ListItem>
-          ))}
-        </List>
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
+          </Link>
+          <Link href="/search">
+            <ListItem button>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <SearchIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="Buscar" />
             </ListItem>
-          ))}
+          </Link>
+          <ListItem button>
+            <ListItemIcon>
+              <AddShoppingCartIcon />
+            </ListItemIcon>
+            <ListItemText primary="Mis compras" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <FavoriteIcon />
+            </ListItemIcon>
+            <ListItemText primary="Favoritos" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <AccountCircleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Mi cuenta" />
+          </ListItem>
         </List>
       </Drawer>
     </div>
