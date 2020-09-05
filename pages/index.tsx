@@ -1,15 +1,16 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import {useRouter} from 'next/router'
+import { NextPage } from 'next'
+import { useEffect } from 'react'
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const Index : NextPage = () => {
+    const router = useRouter();
 
-export default IndexPage
+    useEffect(() => {
+        router.push('/home')
+    }, []);
+    
+    return null;
+
+}
+
+export default Index
