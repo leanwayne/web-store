@@ -1,11 +1,13 @@
 import { NextPage } from "next"
-import { TextField } from "@material-ui/core"
+
+import Slider from "../../components/carousel"
+
 
 const HomePage : NextPage = () => {
 
     return (
-        <div>
-            <TextField variant='outlined' />
+        <div>   
+            render(<Slider />);
         </div>
     )
 }
