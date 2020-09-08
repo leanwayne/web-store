@@ -4,7 +4,6 @@ import Menu from "./menu";
 import {createStyles, Theme, makeStyles, ThemeProvider} from "@material-ui/core/styles";
 import {layoutTheme} from "../utils/theme-layout";
 import {CssBaseline} from "@material-ui/core";
-import {theme} from "../utils/theme";
 
 const drawerWidth = 240;
 
@@ -32,7 +31,7 @@ type Props = {
     title?: string;
 };
 
-const Layout = ({ children, title = "This is the default title" }: Props) => {
+const Layout = ({ children, title = "Web Store" }: Props) => {
     const classes = useStyles();
 
     return (
