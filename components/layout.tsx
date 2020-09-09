@@ -4,8 +4,7 @@ import Menu from "./menu";
 import {createStyles, Theme, makeStyles, ThemeProvider} from "@material-ui/core/styles";
 import {layoutTheme} from "../utils/theme-layout";
 import {CssBaseline} from "@material-ui/core";
-
-const drawerWidth = 240;
+import {theme} from "../utils/theme";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -13,9 +12,6 @@ const useStyles = makeStyles((theme: Theme) =>
             '@media screen': {
                 display: 'flex',
             },
-        },
-        drawerSpacing: {
-            ...theme.mixins.toolbar,
         },
         main: {
             flexGrow: 1,
@@ -41,17 +37,17 @@ const Layout = ({ children, title = "Web Store" }: Props) => {
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            {/*<ThemeProvider theme={theme}>*/}
+            <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <ThemeProvider theme={layoutTheme}>
-                    <Menu drawerWidth={drawerWidth} />
+                    <Menu />
                 </ThemeProvider>
                 <main className={classes.main}>
-                    <div style={{paddingLeft: drawerWidth + 20, paddingTop: 20}}>
+                    <div>
                         {children}
                     </div>
                 </main>
-            {/*</ThemeProvider>*/}
+            </ThemeProvider>
         </div>
     );
 };

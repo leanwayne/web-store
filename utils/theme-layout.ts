@@ -1,16 +1,14 @@
 import {createMuiTheme} from '@material-ui/core/styles';
 import {theme as defaultTheme} from './theme';
 
-const drawerWidth = 240;
-
 export const layoutTheme = createMuiTheme({
     overrides: {
         MuiDrawer: {
             root: {
-                width: drawerWidth,
+                width: '100%',
             },
             paper: {
-                width: drawerWidth,
+                width: '100%',
                 background: '#fff',
                 boxShadow: '1px 0 2px rgba(0, 0, 0, 0.2)',
             },

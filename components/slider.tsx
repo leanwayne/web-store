@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import Carousel from "react-bootstrap/Carousel";
 import {Typography} from "@material-ui/core";
-import { BorderStyle } from "@material-ui/icons";
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       root: {
         display: "flex",
       },
-      cover: {backgroundSize: "cover"},
-
-      image: { width: "inherit", backgroundSize: "cover", borderStyle: "solid"}
+      image: {
+          width: "100%",
+          backgroundSize: "cover",
+      }
     })
 );
 
