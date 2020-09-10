@@ -15,10 +15,11 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         main: {
             flexGrow: 1,
-            width: '100%',
-            padding: theme.spacing(2),
-            overflowX: 'auto',
+            width: '100%',                      
         },
+        padding: {
+            paddingTop:'58px'
+        }
     })
 );
 
@@ -43,7 +44,7 @@ const Layout = ({ children, title = "Web Store" }: Props) => {
                     <Menu />
                 </ThemeProvider>
                 <main className={classes.main}>
-                    <div>
+                    <div className={classes.padding}>
                         {children}
                     </div>
                 </main>

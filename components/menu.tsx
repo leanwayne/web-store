@@ -6,70 +6,56 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import {
-    Home as HomeIcon,
-    Search as SearchIcon,
-    AddShoppingCart as AddShoppingCartIcon,
-    Favorite as FavoriteIcon,
-    AccountCircle as AccountCircleIcon,
+  Home as HomeIcon,
+  Search as SearchIcon,
+  AddShoppingCart as AddShoppingCartIcon,
+  Favorite as FavoriteIcon,
+  AccountCircle as AccountCircleIcon,
 } from "@material-ui/icons";
 import Link from "next/link";
-import {Grid} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            display: "flex",
-        },
-    })
+  createStyles({
+    root: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",   
+    },
+    grid:{
+      height: '58px' 
+    }
+  })
 );
 
-type MenuProps = {
-
-};
+type MenuProps = {};
 
 export default function Menu({}: MenuProps) {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <div className={classes.root}>
-            <Drawer variant="permanent" anchor="top">
-                <Grid container>
-                    <Link href="/home">
-                        <ListItem button>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Inicio" />
-                        </ListItem>
-                    </Link>
-                    <Link href="/search">
-                        <ListItem button>
-                            <ListItemIcon>
-                                <SearchIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Buscar" />
-                        </ListItem>
-                    </Link>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <AddShoppingCartIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Mis compras" />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <FavoriteIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Favoritos" />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <AccountCircleIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Mi cuenta" />
-                    </ListItem>
-                </Grid>
-            </Drawer>
-        </div>
-    );
+  return (
+    <div className={classes.root}>
+      <Drawer variant="permanent" anchor="top">
+        <Grid container className={classes.grid}>
+          <Link href="/home">
+            <Button>Inicio</Button>
+          </Link>
+          <Link href="/search">
+            <Button>Buscar</Button>
+          </Link>
+          <Link href="/search">
+            <Button>Mis compras</Button>
+          </Link>
+          <Link href="/search">
+            <Button>Favoritos</Button>
+          </Link>
+          <Link href="/search">
+            <Button>Mi cuenta</Button>
+          </Link>
+        </Grid>
+      </Drawer>
+    </div>
+  );
 }
