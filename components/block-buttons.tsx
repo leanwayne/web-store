@@ -8,6 +8,8 @@ import {
   ButtonBase,
 } from "@material-ui/core";
 
+
+// para este array tenes que definir un type, asi como está es un array de "any"
 const images = [
   {
     url: "https://scontent.feze7-1.fna.fbcdn.net/v/t1.0-9/96825748_10222284173602481_1454861901698695168_o.jpg?_nc_cat=102&_nc_sid=730e14&_nc_ohc=Vl_qMDLiqusAX-gmLDB&_nc_ht=scontent.feze7-1.fna&oh=6271caf32f2fcce022b3e18d88e06ea7&oe=5F821DD3",
@@ -35,12 +37,13 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
     },
     block: {
-      height: "225px",
+      height: "225px", //numero magico
       backgroundColor: "#20232a",
       alignItems: "center",
       display: "flex",
       justifyContent: "center",
     },
+    //no se usa
     divider: {
       width: "261px",
       height: "5px",
@@ -51,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     image: {
       position: "relative",
-      height: 200,
+      height: 200, // mas numeros magicos
       [theme.breakpoints.down("xs")]: {
         width: "100% !important", // Overrides inline-style
         height: 100,
@@ -69,6 +72,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
       },
     },
+    //esto está vacío
     focusVisible: {},
     imageButton: {
       position: "absolute",
@@ -107,7 +111,7 @@ const useStyles = makeStyles((theme: Theme) =>
       }px`,
     },
     imageMarked: {
-      height: 3,
+      height: 3,// muchos numeros magicos, esto no escala
       width: 18,
       backgroundColor: theme.palette.common.white,
       position: "absolute",
@@ -117,11 +121,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
+//muchos estilos, yo sacaría todos y usar <Grid/>
+
 
 const BlockButtons: NextPage = () => {
   const classes = useStyles();
   return (
     <div className={classes.block}>
+      {/*root siempre tiene que ser el estilo que tiene el padre del componente, dalo vuelta*/}
       <div className={classes.root}>
         {images.map((image) => (
           <ButtonBase
@@ -129,12 +136,14 @@ const BlockButtons: NextPage = () => {
             key={image.title}
             className={classes.image}
             focusVisibleClassName={classes.focusVisible}
+            //no hacer salto de linea acá, esto puede ocupar una sola linea
             style={{
               width: image.width,
             }}
           >
             <span
               className={classes.imageSrc}
+                //esto puede ocupar una sola linea
               style={{
                 backgroundImage: `url(${image.url})`,
               }}

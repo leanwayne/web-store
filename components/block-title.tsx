@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const BlockTitle: NextPage = () => {
   const classes = useStyles();
   return (
+      /*este className se tiene que llamar root*/
     <div className={classes.block}>
       <Typography variant="h4">
         OUR PROGRAMS
