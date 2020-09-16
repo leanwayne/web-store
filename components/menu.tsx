@@ -43,7 +43,7 @@ export default function Menu({}: MenuProps) {
             <Button>Inicio</Button>
           </Link>
           <Link href="/search">
-            <Button>Buscar</Button>
+            <Button>Programs</Button>
           </Link>
           <Link href="/search">
             <Button>Mis compras</Button>

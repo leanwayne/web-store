@@ -10,8 +10,7 @@ import {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {},
-    block: {
+    root: {
       height: "225px",
       backgroundColor: "#20232a",
       alignItems: "center",
@@ -19,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "center",
     },
     divider: {
-      width: "261px",
+      width: "100%",
       height: "5px",
       alignItems: "center",
       display: "flex",
@@ -29,13 +28,18 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const BlockTitle: NextPage = () => {
+type BlockTitleProps = {
+  title: string,
+  subTitle?: string,
+}
+
+export default function BlockTitle(props: BlockTitleProps) {
   const classes = useStyles();
   return (
       /*este className se tiene que llamar root*/
-    <div className={classes.block}>
+    <div className={classes.root}>
       <Typography variant="h4">
-        OUR PROGRAMS
+        {props.title}
         <br />
         <Divider className={classes.divider} />
       </Typography>
@@ -43,4 +47,4 @@ const BlockTitle: NextPage = () => {
   );
 };
 
-export default BlockTitle;
+

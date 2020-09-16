@@ -1,6 +1,8 @@
 import { NextPage } from "next"
-import SearchInput from "../../components/search-input"
 import { Grid, Card, makeStyles, Theme, createStyles } from "@material-ui/core"
+import BlockTitle from "../../components/block-title";
+import React from "react";
+import CardSection from "../../components/card-section";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,11 +23,9 @@ const SearchPage : NextPage = () => {
 
     return(
         <div className={classes.root}>
-            <SearchInput/>
             <Grid>
-                <Card className={classes.card}>
-                    Hola Mundo
-                </Card>
+            <BlockTitle title='Training Programs'/>
+            <CardSection/>
             </Grid>
         </div>
     )

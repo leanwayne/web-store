@@ -8,21 +8,28 @@ import {
   ButtonBase,
 } from "@material-ui/core";
 
+type imageButton = {
+  url: string;
+  title: string;
+  width: string;
+};
 
-// para este array tenes que definir un type, asi como está es un array de "any"
-const images = [
+const images: imageButton[] = [
   {
-    url: "https://scontent.feze7-1.fna.fbcdn.net/v/t1.0-9/96825748_10222284173602481_1454861901698695168_o.jpg?_nc_cat=102&_nc_sid=730e14&_nc_ohc=Vl_qMDLiqusAX-gmLDB&_nc_ht=scontent.feze7-1.fna&oh=6271caf32f2fcce022b3e18d88e06ea7&oe=5F821DD3",
+    url:
+      "https://scontent.feze7-1.fna.fbcdn.net/v/t1.0-9/96825748_10222284173602481_1454861901698695168_o.jpg?_nc_cat=102&_nc_sid=730e14&_nc_ohc=Vl_qMDLiqusAX-gmLDB&_nc_ht=scontent.feze7-1.fna&oh=6271caf32f2fcce022b3e18d88e06ea7&oe=5F821DD3",
     title: "Online Coaching",
-    width: "40%",
+    width: "30%",
   },
   {
-    url: "https://scontent.feze7-1.fna.fbcdn.net/v/t1.0-9/96825748_10222284173602481_1454861901698695168_o.jpg?_nc_cat=102&_nc_sid=730e14&_nc_ohc=Vl_qMDLiqusAX-gmLDB&_nc_ht=scontent.feze7-1.fna&oh=6271caf32f2fcce022b3e18d88e06ea7&oe=5F821DD3",
+    url:
+      "https://scontent.feze7-1.fna.fbcdn.net/v/t1.0-9/97933573_10222313402653189_6633254943434211328_o.jpg?_nc_cat=103&_nc_sid=730e14&_nc_ohc=N5uzxvSr67sAX8K8xmF&_nc_ht=scontent.feze7-1.fna&oh=770ad479c8eed42c5840cff845b58fb1&oe=5F7F1133",
     title: "Fit Dragon Program",
     width: "30%",
   },
   {
-    url: "https://scontent.feze7-1.fna.fbcdn.net/v/t1.0-9/96825748_10222284173602481_1454861901698695168_o.jpg?_nc_cat=102&_nc_sid=730e14&_nc_ohc=Vl_qMDLiqusAX-gmLDB&_nc_ht=scontent.feze7-1.fna&oh=6271caf32f2fcce022b3e18d88e06ea7&oe=5F821DD3",
+    url:
+      "https://scontent.feze7-1.fna.fbcdn.net/v/t1.0-9/96825748_10222284173602481_1454861901698695168_o.jpg?_nc_cat=102&_nc_sid=730e14&_nc_ohc=Vl_qMDLiqusAX-gmLDB&_nc_ht=scontent.feze7-1.fna&oh=6271caf32f2fcce022b3e18d88e06ea7&oe=5F821DD3",
     title: "One fir Program",
     width: "30%",
   },
@@ -31,27 +38,20 @@ const images = [
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      height: "500px", //numero magico
+      backgroundColor: "#3a3c40",
+      alignItems: "center",
+      display: "flex",
+      justifyContent: "center",
+    },
+    block: {
       display: "flex",
       flexWrap: "wrap",
       minWidth: 300,
-      width: "100%",
-    },
-    block: {
-      height: "225px", //numero magico
-      backgroundColor: "#20232a",
-      alignItems: "center",
-      display: "flex",
+      width: "90%",
       justifyContent: "center",
     },
-    //no se usa
-    divider: {
-      width: "261px",
-      height: "5px",
-      alignItems: "center",
-      display: "flex",
-      justifyContent: "center",
-      backgroundColor: "#fd3c3d",
-    },
+
     image: {
       position: "relative",
       height: 200, // mas numeros magicos
@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme: Theme) =>
       }px`,
     },
     imageMarked: {
-      height: 3,// muchos numeros magicos, esto no escala
+      height: 3, // muchos numeros magicos, esto no escala
       width: 18,
       backgroundColor: theme.palette.common.white,
       position: "absolute",
@@ -123,27 +123,24 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 //muchos estilos, yo sacaría todos y usar <Grid/>
 
-
-const BlockButtons: NextPage = () => {
+export default function BlockButtons() {
   const classes = useStyles();
   return (
-    <div className={classes.block}>
-      {/*root siempre tiene que ser el estilo que tiene el padre del componente, dalo vuelta*/}
-      <div className={classes.root}>
+    <div className={classes.root}>
+      <div className={classes.block}>
         {images.map((image) => (
           <ButtonBase
             focusRipple
             key={image.title}
             className={classes.image}
             focusVisibleClassName={classes.focusVisible}
-            //no hacer salto de linea acá, esto puede ocupar una sola linea
             style={{
               width: image.width,
+              height: "600px",
             }}
           >
             <span
               className={classes.imageSrc}
-                //esto puede ocupar una sola linea
               style={{
                 backgroundImage: `url(${image.url})`,
               }}
@@ -167,4 +164,4 @@ const BlockButtons: NextPage = () => {
   );
 };
 
-export default BlockButtons;
+
